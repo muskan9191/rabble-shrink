@@ -1,0 +1,54 @@
+{% extends "dashlay.html" %}
+{% block body %}
+<!-- ########################################################################################## -->
+<!-- Add Products-->
+<!-- ########################################################################################## -->
+    <div class="form" style="width:50%">
+        {% include "includes/message.html" %}
+        <h3 class="text-center"> Update Product Information </h3>
+        <br>
+        <form action="" method="POST" enctype="multipart/form-data" >
+           <div class="row container-fluid">
+               <div class="col-6">
+                    <div class="form-group">
+                        <label for="pname">Product Name:</label>
+                        <input class="form-control" id="pname" value="{{product.product_name}}" name="pname" type="text" placeholder="Product Name" required>
+                    </div>
+                   <br>
+                    <div class="form-group">
+                    <label for="cate">Category: </label>
+                      <select class="form-control" id="cate" value="{{product.category}}" name="category" placeholder="Category" required>
+                        {% for category in categories %}
+                            <option value="{{category.category}}">{{category.category}}</option>
+                        {% endfor %}
+                      </select>
+                    </div><br>
+               </div>
+
+               <br>
+                    <div class="col-6">
+                    <div class="form-group">
+                        <label for="price">Price: </label>
+                        <input class="form-control" id="price" value="{{product.price}}" name="price" type="text" placeholder="Price" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="quan">Quantity: </label>
+                        <input class="form-control" id="quan" value="{{product.quantity}}" name="quantity" type="text" placeholder="Quantity" required>
+                    </div>
+               </div>
+           </div>
+
+            <br>
+            <div class="form-group text-center">
+                <button class="btn btn-dark w-50" type="submit" > Update </button>
+            </div>
+
+        </form>
+    </div>
+
+<!-- **************************************************************************************** -->
+
+    <!-- End of Content Wrapper -->
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "userlayout.html" %}
+{% block body %}
+<body>
+<div class="content">
+<!-- ########################################################################################## -->
+    <!-- Navbar -->
+<!-- ########################################################################################## -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Online Shopping Zone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/myorders">My Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/userlogout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Hello {{g.user.fname}}!</a>
+          </li>
+
+        </ul>
+    
+      </div>
+    </nav>
+<!-- **************************************************************************************** -->
+
+
+<!-- ########################################################################################## -->
+<!-- Carousal -->
+<!-- ########################################################################################## -->
+
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{url_for('static',filename='images/home.jpg')}}" class="d-block w-100 cimage" alt="..">
+      <div class="carousel-caption d-none d-md-block">
+        <h2>Online Shopping Zone</h2>
+        <p>All Shops Under One Roof.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- **************************************************************************************** -->
+
+<div class="row container-fluid mt-5" style="text-align:center;")>
+  <div class="col-4">
+  <img src="{{url_for('static',filename='images/women.jpg')}}"  style="width:70%;" alt="...">
+  </div>
+  <div class="col-4">
+  <img src="{{url_for('static',filename='images/shopp.jpg')}}"  style="width:70%;" alt="...">
+  </div>
+  <div class="col-4">
+  <img src="{{url_for('static',filename='images/business.jpg')}}"  style="width:70%;" alt="...">
+  </div>
+</div>
+
+<h3 class="text-center" style="margin:30px">Near By Shops</h3>
+
+<div style="color:black">
+
+  {% for merchant in merchants: %}
+  <a href="/shop/{{merchant.merchant_id}}">
+    <div class="shop">
+      <b>{{merchant.shop_name}}</b><br>
+      {{merchant.address}}<br>
+      {{merchant.pincode}}<br>
+    </div>
+  </a>
+  {% endfor %}
+
+</div>
+</div>
+{% endblock %}
+

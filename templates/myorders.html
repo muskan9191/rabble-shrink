@@ -1,0 +1,134 @@
+{% extends "userlayout.html" %}
+{% block body %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/loginstyle.css')}}">
+<style>
+ .modal-dialog {
+    height: 50%;
+    width: 50%;
+}
+.modal-header {
+    color: white;
+    background-color: grey;
+}
+.openmodal{
+    float:right;
+}
+.openmodal:hover{
+    text-decoration: none;
+    color:black;
+}
+
+textarea {
+    border: none;
+    margin:0px 10px;
+    box-shadow: none !important;
+    -webkit-appearance: none;
+    outline: 0px !important
+}
+</style>
+  </head>
+  <body>
+<div class="content">
+  <!-- ########################################################################################## -->
+    <!-- Navbar -->
+<!-- ########################################################################################## -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Online Shopping Zone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="/userpage/{{g.user.user_id}}">Home</a>
+          </li>
+          <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link" href="/myorders">My Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/userlogout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Hello {{g.user.fname}}!!</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<!-- **************************************************************************************** -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary "  style="height:15px">
+<!--    <a class="navbar-brand" href="#">Login to User Dashboard</a>-->
+    </nav>
+<br>
+<!-- ########################################################################################## -->
+<!-- my orders-->
+<!-- ########################################################################################## -->
+
+<div class="Container-fluid ">
+    <br>
+    <h1 style="text-align:center;"> Your Orders </h1>
+    <br>
+    <div style="margin-left:50px">
+    {% for merchant,order in packed: %}
+        <a href="products/{{order.order_id}}" class="cartlink">
+        <div class="main" style="float:left">
+            <div class="" style="">
+                <h3>{{merchant.shop_name}}</h3><hr>
+            </div>
+                <h5>Order Details</h5>
+                <b>Order ID:</b> {{order.order_id}}<br>
+                By {{order.cust_name}}<br>
+                <b>Order Amount:</b> ₹{{order.amount}}<br>
+            Order was placed on <b>{{order.date}}</b><br>
+            <b>Order Status: <span style="color:green">{{order.status}}</span></b><br>
+             <!-- feedback-->
+             <!--Modal Launch Button-->
+            <a type="button" class="openmodal" data-toggle="modal"  data-target="#myModal"><span style="color:grey;"><i>feedback</i></span></a>
+            <!--Division for Modal-->
+            <div id="myModal" class="modal fade" role="dialog">
+                <!--Modal-->
+                <div class="modal-dialog">
+                    <!--Modal Content-->
+                    <div class="modal-content">
+                        <!-- Modal Header-->
+                        <div class="modal-header">
+                            <h3>Feedback Request</h3>
+                            <!--Close/Cross Button-->
+                            <button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>
+                        </div> <!-- Modal Body-->
+                        <div class="modal-body text-center"> <i class="far fa-file-alt fa-4x mb-3 animated rotateIn icon1"></i>
+                            <h3>Your opinion matters</h3>
+                            <h5>Help us improve our product? <strong>Give us your feedback.</strong></h5>
+                            <hr>
+                            <h6>Your Rating</h6>
+                        </div> <!-- Radio Buttons for Rating-->
+                        <form method="post">
+                            <div class="form-check mb-4"> <input name="feedback" value="Very good" type="radio"> <label class="ml-3">Very good</label> </div>
+                            <div class="form-check mb-4"> <input name="feedback" value="Good" type="radio"> <label class="ml-3">Good</label> </div>
+                            <div class="form-check mb-4"> <input name="feedback" value="Mediocre" type="radio"> <label class="ml-3">Mediocre</label> </div>
+                            <div class="form-check mb-4"> <input name="feedback" value="Bad" type="radio"> <label class="ml-3">Bad</label> </div>
+                            <div class="form-check mb-4"> <input name="feedback" value="Very Bad" type="radio"> <label class="ml-3">Very Bad</label> </div>
+                            <!--Text Message-->
+                            <div class="text-center">
+                                <h4>What could we improve?</h4>
+                            </div>
+                            <input hidden type="number" name="mid" value="{{merchant.merchant_id}}">
+                            <input hidden type="text" name="oid" value="{{order.order_id}}">
+                            <textarea type="textarea" placeholder="Your Message" name="desc" rows="3" style=""></textarea> <!-- Modal Footer-->
+                            <div class="modal-footer m-auto">
+                                <button href="" class="btn btn-secondary" type="submit">Send <i class="fa fa-paper-plane"></i> </button>
+                                <a href="" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    {% endfor %}
+    </div>
+</div>
+
+<!-- **************************************************************************************** -->
+</div>
+{% endblock %}

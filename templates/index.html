@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block body %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Online Grocery Shopping</title>
+  </head>
+  <body>
+<!-- ########################################################################################## -->
+    <!-- Navbar -->
+<!-- ########################################################################################## -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Online Grocery Shopping</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Login
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/user_login">User Login</a>
+              <a class="dropdown-item" href="/merchant_login">Merchant Login</a>
+              <!-- <div class="dropdown-divider"></div> -->
+<!--              <a class="dropdown-item" href="/admin_login">Admin Login</a>-->
+            </div>
+          </li>
+
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sign In
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/register">User SignIn</a>
+              <a class="dropdown-item" href="/merchant_register">Merchant SignIn</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Hello User!</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+<!-- **************************************************************************************** -->
+
+<!-- ########################################################################################## -->
+<!-- Carousal -->
+<!-- ########################################################################################## -->
+
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{url_for('static',filename='images/home.jpg')}}" class="d-block w-100 cimage" alt="..">
+      <div class="carousel-caption d-none d-md-block">
+        <h2>Online Grocery Shopping</h2>
+        <p>All Grocery Stores Under One Roof.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- **************************************************************************************** -->
+
+<div class="row container-fluid mt-5" style="text-align:center;")>
+  <div class="col-4">
+  <img src="{{url_for('static',filename='images/women.jpg')}}"  style="width:70%;" alt="...">
+  </div>
+  <div class="col-4">
+  <img src="{{url_for('static',filename='images/shopp.jpg')}}"  style="width:70%;" alt="...">
+  </div>
+  <div class="col-4">
+  <img src="{{url_for('static',filename='images/business.jpg')}}"  style="width:70%;" alt="...">
+  </div>
+</div>
+<script type="text/javascript" src="js/javas.js"></script>
+{% endblock %}
+

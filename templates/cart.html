@@ -1,0 +1,87 @@
+{% extends "userlayout.html" %}
+{% block body %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/loginstyle.css')}}">
+</head>
+<body>
+<div class="content">
+<!-- ########################################################################################## -->
+    <!-- Navbar -->
+<!-- ########################################################################################## -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Online Shopping Zone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/userpage/{{g.user.user_id}}">Home<span class="sr-only">(current)</span></a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/myorders">My Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/userlogout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Hello {{g.user.fname}}!</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/cart/{{g.user.user_id}}/{{merchant.merchant_id}}">Cart</a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+<!-- **************************************************************************************** -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary "  style="height:15px">
+<!--    <a class="navbar-brand" href="#">Login to User Dashboard</a>-->
+    </nav>
+<br>
+
+<!-- ########################################################################################## -->
+    <!-- cart -->
+<!-- ########################################################################################## -->
+<br>
+
+<div class="row m-4" style="">
+    <div class="col-10 m-auto">
+         <h2 style="text-align:center;"> Your Cart </h2><br>
+        <div style="padding:10px;background-color:white">
+        {% for product,quantity in packed: %}
+            <div class="row mao m-auto">
+                <div class="col-2 m-auto">
+                    {% set iname = 'images/products/' + product.img_name %}
+                    <img src="{{ url_for('static',filename=iname)}}" style="width:100px;height:100px;">
+                </div>
+                <div class="col-4 m-auto">
+                    {{product.product_name}}<br>
+                    ₹ {{product.price}} per {{product.unit}}
+                </div>
+                <div class="col-1 m-auto">
+                    x {{quantity}}
+                </div>
+                {% set amount = quantity * product.price %}
+                <div class="col-1 m-auto">
+                     {{amount}}
+                </div>
+            </div>
+
+        {% endfor %}
+        </div>
+        <hr>
+        <div class="row m-auto" style="padding:2px; margin:5px 20px;">
+            <div class="col-2"></div>
+            <div class="col-4 m-auto"></div>
+            <div class="col-1 m-auto"><h4>Total</h4></div>
+            <div class="col-1 m-auto"><h4>{{total}}</h4></div>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <a href="/buynow/{{merchant.merchant_id}}"><button class="btn btn-secondary">Place Order</button></a>
+</div>
+</div>
+<!-- **************************************************************************************** -->
+{% endblock %}

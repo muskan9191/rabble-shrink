@@ -1,0 +1,10 @@
+{
+  "params":
+  {
+    "upload_folder" : "C:\\Users\\HP\\Desktop\\Flask Projects\\grocerystore\\static\\images\\products",
+    "database" : "mysql+pymysql://root:@localhost/grocerystore",
+    "secretkey" : "iamasecretkey",
+    "email": "goatboat261@gmail.com",
+    "password" : "Jiya1234*"
+  }
+}

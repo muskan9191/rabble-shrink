@@ -1,0 +1,57 @@
+{% extends "dashlay.html" %}
+{% block body %}
+    <style>
+      .main{
+        padding:20px;
+        background-color:white;
+        margin:10px;
+        border:1px solid black;
+        border-radius:10px;
+      }
+      .cartlink:hover,.cartlink:active{
+            text-decoration:none;
+            color:black;
+        }
+        .cartlink:link,.cartlink:visited{
+            text-decoration:none;
+            color:black;
+        }
+    </style>
+</head>
+
+<div class="Container-fluid ">
+    <br>
+    <h1 style="text-align:center;"> Pending Orders </h1>
+    <br>
+    <div style="text-align:center;margin-left:180px">
+    {% for order in orders: %}
+        {% if order.status != "Completed" %}
+        <a href="/orderproducts/{{order.order_id}}" class="cartlink">
+        <div class="main" style="float:left;">
+            <div>
+                <h3>{{order.order_id}}</h3><hr>
+            </div>
+                <h5>Order Details</h5>
+                By {{order.cust_name}}<br>
+                Order Amount: ₹{{order.amount}}<br>
+                Order was placed on {{order.date}}<br><br>
+            <form action="" method="post" >
+                {% if order.status=="Placed": %}
+                {% set status = "Ready" %}
+                {% elif order.status=="Ready": %}
+                {% set status = "Done" %}
+                {% endif %}
+                <input hidden type="text" value="{{order.order_id}}" name="oid">
+                <button type="submit" class="btn btn-secondary w-50" style="">{{status}}</button>
+            </form>
+        </div>
+        </a>
+        {% endif %}
+    {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}
+

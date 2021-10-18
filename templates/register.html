@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+{% block body %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/loginstyle.css')}}">
+
+    <!--title-->
+    <title>Register User</title>
+
+  </head>
+  <body>
+
+<div class="content">
+
+  <!-- ########################################################################################## -->
+    <!-- Navbar -->
+<!-- ########################################################################################## -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Online Shopping Zone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/user_login">Login</a>
+          </li>
+          <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link">Hello User!</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+<!-- **************************************************************************************** -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary "  style="height:15px">
+<!--    <a class="navbar-brand" href="#">Register User</a>-->
+    </nav>
+<br>
+<!-- ########################################################################################## -->
+<!-- Login Form-->
+<!-- ########################################################################################## -->
+    <div class="form"  style="width:50%">
+          {% include "includes/message.html" %}
+        <h3 class="text-center"> User Sign In </h3>
+        <br>
+        <form action="" method="POST">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="fname">First Name:</label>
+                        <input class="form-control" id="fname" name="fname" type="text" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name: </label>
+                        <input class="form-control" id="lname" name="lname" type="text" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="gender">Gender: </label>
+                      <select class="form-control" id="gender" name="gender" placeholder="Gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="Prefer_Not_to_Say">Prefer Not to Say</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="uname">User Name:</label>
+                        <input class="form-control" id="uname" name="uname" type="text" placeholder="User Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mail">Email id:</label>
+                        <input class="form-control" id="mail" name="mail" type="email" placeholder="Email id" required>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="psw">Password: </label>
+                        <input class="form-control" id="psw" name="password" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cfpwd">Confirm Password: </label>
+                        <input class="form-control" id="cfpwd" name="cfpwd" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number: </label>
+                        <input class="form-control" id="phone" name="phone" type="text" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address: </label>
+                        <input class="form-control" id="address" name="address" type="text" placeholder="Address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">Pincode:</label>
+                        <input class="form-control" id="pincode" name="pincode" type="number" placeholder="Pincode" required>
+                    </div>
+                    <br>
+                </div>
+            </div><br>
+            <div class="form-group text-center">
+            <button class="btn btn-success w-50" type="submit" name="registerbtn"> Register </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- **************************************************************************************** -->
+{% endblock %}

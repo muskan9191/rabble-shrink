@@ -1,0 +1,40 @@
+{% extends "dashlay.html" %}
+{% block body %}
+    <div class="form" style="width:50%">
+        {% include "includes/message.html" %}
+        <h3 class="text-center">Product Category List</h3>
+        <br>
+          <table class="table table-hover table-striped m-auto" style="width:80%">
+              <thead>
+                <tr>
+                  <th scope="col">Category ID</th>
+                  <th scope="col">Category</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for category in categories %}
+                <tr>
+                  <td>{{category.c_id}}</td>
+                  <td>{{category.category}}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+           </table>
+        <br>
+        <br>
+        <form action="" method="POST">
+           <div class="row container-fluid">
+                <div class="form-group col-6">
+                    <label for="c_name">Category Name:</label>
+                    <input class="form-control" id="c_name" name="cname" type="text" placeholder="Category Name" required>
+                </div>
+                <div class="form-group col-6">
+                    <br>
+                    <button class="btn btn-dark w-70" onClick="history.go(0)" type="submit" > Add Category </button>
+                </div>
+               </div>
+        </form>
+    </div>
+
+
+{% endblock %}

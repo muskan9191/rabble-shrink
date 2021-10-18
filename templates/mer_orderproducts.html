@@ -1,0 +1,42 @@
+{% extends "dashlay.html" %}
+{% block body %}
+    <style>
+      .main{
+        padding:20px;
+        background-color:white;
+        margin:10px;
+        border:1px solid black;
+        border-radius:10px;
+      }
+      .cartlink:hover,.cartlink:active{
+    text-decoration:none;
+    color:black;
+}
+.cartlink:link,.cartlink:visited{
+    text-decoration:none;
+    color:black;
+}
+    </style>
+</head>
+
+<div class="Container-fluid ">
+    <br>
+    <h1 style="text-align:center;"> {{order.order_id}} </h1>
+    <br>
+    <div style="text-align:center;margin-left:150px">
+    {% for product,pro in packed: %}
+        <div class="main" style="float:left;margin:20px">
+            <div class="" style="">
+                {% set iname = 'images/products/' + product.img_name %}
+                <img src="{{ url_for('static',filename=iname)}}" style="width:200px;height:200px;">
+            </div>
+                <h5>{{product.product_name}}</h5>
+                Price: ₹ {{product.price}} per {{product.unit}}<br>
+                Quantity: {{pro.quantity}}
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,66 @@
+{% extends "dashlay.html" %}
+{% block body %}
+
+    <div class="form"  style="width:50%">
+          {% include "includes/message.html" %}
+        <h3 class="text-center"> Update Personal Information </h3>
+        <br>
+        <form action="" method="POST">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="shopname">Shop Name:</label>
+                        <input class="form-control" id="shopname" name="shop_name" value="{{mercha.shop_name}}" type="text" placeholder="Shop Name" required>
+                    </div>
+                    <div class="form-group">
+                     <label for="business_type">Business Type: </label>
+                      <select class="form-control" id="business_type" name="business_type" value="{{mercha.business_type}}" placeholder="Business Type" required>
+                        <option value="Kirana Store">Kirana Store</option>
+                        <option value="General Store">General Store</option>
+                        <option value="Stationary">Stationary</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="gst_no">GST Number:</label>
+                        <input class="form-control" id="gst_no" name="gst_no" value="{{mercha.gst_no}}" type="number" placeholder="GST Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fname">First Name:</label>
+                        <input class="form-control" id="fname" name="fname" value="{{mercha.fname}}" type="text" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name: </label>
+                        <input class="form-control" id="lname" name="lname" value="{{mercha.lname}}" type="text" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="uname">User Name:</label>
+                        <input class="form-control" id="uname" name="uname" value="{{mercha.uname}}" type="text" placeholder="User Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input class="form-control" id="phone" name="phone" value="{{mercha.phone}}" type="text" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address: </label>
+                        <input class="form-control" id="address" name="address" value="{{mercha.address}}" type="text" placeholder="Address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">Pincode:</label>
+                        <input class="form-control" id="pincode" name="pincode" value="{{mercha.pincode}}" type="number" placeholder="Pincode" required>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <br>
+            <div class="form-group text-center">
+                <button class="btn btn-success w-50" type="submit"> Update </button>
+            </div>
+
+        </form>
+    </div>
+
+
+<!-- **************************************************************************************** -->
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "dashlay.html" %}
+{% block body %}
+
+    <div class="form"  style="width:50%">
+        <h3 class="text-center">Personal Information</h3>
+        <br>
+        <form action="/edit_personalinfo/{{mercha.merchant_id}}">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="shopname">Shop Name:</label>
+                        <input class="form-control" id="shopname" name="shop_name" value="{{mercha.shop_name}}" type="text" readonly >
+                    </div>
+                    <div class="form-group">
+                        <label for="gst_no">GST Number:</label>
+                        <input class="form-control" id="gst_no" name="gst_no" value="{{mercha.gst_no}}" type="number" readonly >
+                    </div>
+                    <div class="form-group">
+                        <label for="fname">First Name:</label>
+                        <input class="form-control" id="fname" name="fname" value="{{mercha.fname}}" type="text" readonly >
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name: </label>
+                        <input class="form-control" id="lname" name="lname" value="{{mercha.lname}}" type="text" readonly >
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="uname">User Name:</label>
+                        <input class="form-control" id="uname" name="uname" value="{{mercha.uname}}" type="text"  readonly >
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input class="form-control" id="phone" name="phone" value="{{mercha.phone}}" type="text"  readonly >
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address: </label>
+                        <input class="form-control" id="address" name="address" value="{{mercha.address}}" type="text" readonly >
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">Pincode:</label>
+                        <input class="form-control" id="pincode"  name="pincode" value="{{mercha.pincode}}" type="number"  readonly >
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <br>
+            <div class="form-group text-center">
+                <button class="btn btn-success w-30">Edit</button>
+            </div>
+        </form>
+    </div>
+
+
+<!-- **************************************************************************************** -->
+{% endblock %}

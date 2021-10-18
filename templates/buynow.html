@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block body %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/loginstyle.css')}}">
+    <style>
+        .imgbg{
+            background-color:azure;
+            border-style:ridge;
+            border-radius:5px;
+            width:500px;
+            height:580px;
+            padding-top:30px;
+        }
+    </style>
+    <title>Online Shopping Zone</title>
+  </head>
+  <body>
+<div class="content">
+  <!-- ########################################################################################## -->
+    <!-- Navbar -->
+<!-- ########################################################################################## -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Online Shopping Zone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="/userpage/{{g.user.user_id}}">Home</a>
+          </li>
+          <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link" href="/myorders">My Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/userlogout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Hello {{g.user.fname}}!!</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+<!-- **************************************************************************************** -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary "  style="height:15px">
+<!--    <a class="navbar-brand" href="#">Login to User Dashboard</a>-->
+    </nav>
+<br>
+
+<!-- ########################################################################################## -->
+<!-- BUYNOW Form-->
+<!-- ########################################################################################## -->
+
+<div class="container">
+	<br>
+	<div class="row ">
+		<div class="col-sm-8">
+			<h3 class="text-center">Order Information</h3><br><br>
+			{% set name = g.user.fname + " " + g.user.lname %}
+			<form action="" method="POST" id="buy">
+                <div class="form-group">
+				<label for="shop" style="font-weight:bold">Shop Name:</label> <br>
+				<input type="text" id="shop" name="shop" value="{{merchant.shop_name}}" required readonly>
+                </div>
+                <div class="form-group">
+                <label for="shop_add" style="font-weight:bold">Shop Address:</label> <br>
+				<input type="text" id="shop_add" name="add" value="{{merchant.address}}" required readonly>
+                </div>
+                <div class="form-group">
+                <label for="name" style="font-weight:bold">Name of the Customer:</label> <br>
+				<input type="text" id="name" name="name" value="{{name}}" required>
+                </div>
+                <div class="form-group">
+                <label for="amt" style="font-weight:bold">Total Amount to be Paid:</label> <br>
+				<input type="text" id="amt" name="amt" value="{{amt}}" required readonly>
+				</div>
+				<button type="submit"  class="btn btn-primary">Confirm Order</button><br>
+                <p class="text-danger">*Your Order will be ready in 20-30 mins after being placed.</p>
+			</form>
+		</div>
+
+	</div>
+</div>
+</div>
+<!-- **************************************************************************************** -->
+{% endblock %}

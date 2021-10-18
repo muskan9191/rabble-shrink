@@ -1,0 +1,26 @@
+{% extends "dashlay.html" %}
+{% block body %}
+          <h3 class="text-center">Feedback</h3>
+        <br>
+          <table class="table table-hover table-striped m-auto" style="width:80%">
+              <thead>
+                <tr>
+                  <th scope="col">Srno</th>
+                  <th scope="col">Order Id</th>
+                  <th scope="col">Comment</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for feed in feedback %}
+                <tr>
+                  <td>{{loop.index}}</td>
+                  <td>{{feed.order_id}}</td>
+                  <td>{{feed.feedback}}</td>
+                  <td>{{feed.description}}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+           </table>
+
+{% endblock %}

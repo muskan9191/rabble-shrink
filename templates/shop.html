@@ -1,0 +1,91 @@
+{% extends "userlayout.html" %}
+{% block body %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/loginstyle.css')}}">
+<style>
+
+</style>
+</head>
+
+<body>
+<div class="content">
+<!-- ########################################################################################## -->
+    <!-- Navbar -->
+<!-- ########################################################################################## -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Online Shopping Zone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/userpage/{{g.user.user_id}}">Home<span class="sr-only">(current)</span></a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/myorders">My Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/userlogout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Hello {{g.user.fname}}!</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/cart/{{g.user.user_id}}/{{merchant.merchant_id}}">Cart</a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+<!-- **************************************************************************************** -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary "  style="height:15px">
+<!--    <a class="navbar-brand" href="#">Login to User Dashboard</a>-->
+    </nav>
+<br>
+<!-- ########################################################################################## -->
+    <!-- shop -->
+<!-- ########################################################################################## -->
+
+<div>
+    <h2 class="text-center" style="margin:30px">{{merchant.shop_name}}</h2>
+    <h3 class="text-center" style="margin:30px">Product List</h3>
+    <div class="row" style="margin-left:200px">
+        {% for product in products: %}
+            <div class="col-5  shops" id="{{product.product_id}}">
+            {% set fname = 'images/products/' + product.img_name %}
+                <div style="text-align:center">
+                    <img  src="{{url_for('static',filename=fname)}}" style="width:250px;height:250px;">
+                    <h3>{{product.product_name}}</h3>
+                    <h4>Price : रु {{product.price}}</h4><br>
+<!--                    <a href="/buynow/{{merchant.merchant_id}}/{{product.product_id}}" style="float:right"><button class="btn btn-secondary" >Buy Now</button></a>-->
+<!--                    <a href=""  ><button class="btn btn-secondary">Add to cart</button></a>-->
+                    <div class="no-gutters  p-0">
+                        {% if product|is_in_cart: %}
+                        <div  class="row" style="margin:0px 100px">
+                            <form action="#{{product.product_id}}" method="POST" class="col-3">
+                                <input hidden type="number" value="1" name="minus">
+                                <input hidden type="number" value="{{product.product_id}}" name="pid">
+                                <input  type="submit" value="-" class="btn btn-block btn-secondary">
+                            </form>
+                            <div class="text-center col"><a class="nav-link cartlink" href="/cart/{{g.user.user_id}}/{{merchant.merchant_id}}">{{product|is_in_cart}} in cart</a></div>
+                            <form action="#{{product.product_id}}" method="POST" class="col-3">
+                                <input hidden type="number" value="{{product.product_id}}" name="pid">
+                                <input  type="submit" value="+" class=" btn btn-block btn-secondary">
+                            </form>
+                        </div>
+                        {% else %}
+                        <form action="#{{product.product_id}}" method="POST" >
+                            <input hidden type="number" value="{{product.product_id}}" name="pid">
+                            <button type="submit" class="btn btn-secondary">Add to cart</button>
+                        </form>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}
